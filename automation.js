@@ -1,5 +1,5 @@
 var webdriver = require('selenium-webdriver');
-var phantomjs = require('selenium-webdriver/phantomjs');
+var chrome = require('selenium-webdriver/chrome');
 var By = webdriver.By;
 var until = webdriver.until;
 var driver;
@@ -66,8 +66,8 @@ function CopyAndSaveTimesheet() {
 
 module.exports = function (url,username, password) {
     driver = new webdriver.Builder()
-    .usingServer('http://localhost:4444/wd/hub')
-    .forBrowser('phantomjs')
+    .usingServer('http://c9t24575.itcs.hpecorp.net:32768/wd/hub')
+    .forBrowser('chrome')
     .build();
 
     return new Promise(function (resolve, reject) {
@@ -80,6 +80,7 @@ module.exports = function (url,username, password) {
             })
             .then(function () {
                 driver.quit();
+                console.log('success'+ new Date() + username);
                 resolve();
             }).catch(function (err) {
                 console.log(err);

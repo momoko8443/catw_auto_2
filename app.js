@@ -6,7 +6,7 @@ var app = express();
 var automation = require('./automation');
 var port = process.env.EXPRESS_PORT || 3000;
 
-//app.use(express.static(path.join(__dirname,'snapshot')));
+app.use(express.static(path.join(__dirname,'public')));
 
 var jobTask;
 var cfg = JSON.parse(fs.readFileSync('./conf.json'));
@@ -18,11 +18,19 @@ function doAsyncSeries(cfg) {
         return promise.then(function (result) {
             return automation(url,account.username,account.password);
         });
-    }, new Promise());
+    }, new Promise(function(resolve,reject){
+        resolve();
+    }));
 }
-app.post('/automation', function (req, res) {
+
+app.post('/automation',function(req,res){
+    doAsyncSeries(cfg);
+    res.sendStatus();
+});
+
+app.post('/automation/schedule', function (req, res) {
     var rule = new schedule.RecurrenceRule();
-    rule.dayOfWeek = [1, 3, 5];
+    rule.dayOfWeek = [3];
     rule.hour = 17;
     rule.minute = 30;
     if (jobTask) {
@@ -31,18 +39,17 @@ app.post('/automation', function (req, res) {
     jobTask = schedule.scheduleJob(rule, function () {
         doAsyncSeries(cfg);
     });
-    doAsyncSeries(cfg);
-    res.end();
+    res.sendStatus();
 });
 
-app.delete('/automation', function (req, res) {
+app.delete('/automation/schedule', function (req, res) {
     if (jobTask) {
         jobTask.cancel();
     }
     res.end();
 });
 
-app.get('/automation', function (req, res) {
+app.get('/automation/schedule', function (req, res) {
     res.sendStatus(200);
 });
 
