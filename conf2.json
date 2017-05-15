@@ -1,10 +1,11 @@
 {
     "address": "https://e4u0129.houston.entsvcs.net:4102/hps-ic-red(bD16aCZjPTgwMCZ0PVpIUFNfSUM=)/default.htm",
     "accounts": [
+        
         {
-            "username": "60075098",
+            "username": "75000567",
             "password": "2017.May",
-            "displayName":"Zheng, Huibin"
+            "displayName":"Wang, Yulan"
         },
         {
             "username": "60074938",
@@ -15,46 +16,6 @@
             "username": "60076280",
             "password": "2017.May",
             "displayName":"Yu, Marvel"
-        },
-        {
-            "username": "60075123",
-            "password": "2017.May",
-            "displayName":"Zhao, Qian"
-        },
-        {
-            "username": "21610770",
-            "password": "2017.May",
-            "displayName":"Tian, Xia"
-        },
-        {
-            "username": "60079305",
-            "password": "2017.May",
-            "displayName":"Tang, Jing"
-        },
-        {
-            "username": "60082036",
-            "password": "2017.May",
-            "displayName":"Xu, Zhixing"
-        },
-        {
-            "username": "60079319",
-            "password": "2017.May",
-            "displayName":"Li, Yiqing"
-        },
-        {
-            "username": "60126165",
-            "password": "2017.May",
-            "displayName":"Yang, Yong"
-        },
-        {
-            "username": "70000632",
-            "password": "2017.May",
-            "displayName":"Zhu, Huijing"
-        },
-        {
-            "username": "75000567",
-            "password": "2017.May",
-            "displayName":"Wang, Yulan"
         }
     ]
 }

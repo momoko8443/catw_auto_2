@@ -11,6 +11,15 @@ app.use(express.static(path.join(__dirname,'public')));
 var jobTask;
 var cfg = JSON.parse(fs.readFileSync('./conf2.json'));
 
+function findAccount(username){
+    for(var i=0;i<cfg.accounts.length;i++){
+        var account = cfg.accounts[i];
+        if(account.username === username){
+            return account;
+        }
+    }
+    return null;
+}
 function doAsyncSeries(cfg) {
     var url = cfg.address;
     var accounts = cfg.accounts;
@@ -25,8 +34,15 @@ function doAsyncSeries(cfg) {
     }));
 }
 
-app.post('/automation',function(req,res){
-    doAsyncSeries(cfg);
+app.post('/automation/:username',function(req,res){
+    var username = req.params.username;
+    if(username){
+        var account = findAccount(username);
+        automation()
+    }else{
+        doAsyncSeries(cfg);
+    }
+    
     res.sendStatus(200);
 });
 
