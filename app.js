@@ -9,13 +9,15 @@ var port = process.env.EXPRESS_PORT || 3000;
 app.use(express.static(path.join(__dirname,'public')));
 
 var jobTask;
-var cfg = JSON.parse(fs.readFileSync('./conf.json'));
+var cfg = JSON.parse(fs.readFileSync('./conf2.json'));
 
 function doAsyncSeries(cfg) {
     var url = cfg.address;
     var accounts = cfg.accounts;
     return accounts.reduce(function (promise, account) {
-        return promise.then(function (result) {
+        return promise.catch(function(error){
+            return;
+        }).then(function (result) {
             return automation(url,account.username,account.password);
         });
     }, new Promise(function(resolve,reject){
@@ -25,7 +27,7 @@ function doAsyncSeries(cfg) {
 
 app.post('/automation',function(req,res){
     doAsyncSeries(cfg);
-    res.sendStatus();
+    res.sendStatus(200);
 });
 
 app.post('/automation/schedule', function (req, res) {
@@ -54,5 +56,5 @@ app.get('/automation/schedule', function (req, res) {
 });
 
 app.listen(port, function () {
-    console.log('catw_auto_2 is runningf on port %d', port);
+    console.log('catw_auto_2 is running on port %d', port);
 });
