@@ -10,13 +10,18 @@ var driver;
 
 driver = new webdriver.Builder()
     .withCapabilities(customPhantom)
-    //.setProxy(proxy.manual({http: 'web-proxy.jpn.hp.com:8080'}))
+    .setProxy(proxy.manual({http: 'web-proxy.houston.hpecorp.net:8080'}))
     .build();
 
 driver.get('https://e4u0129.houston.entsvcs.net:4102/hps-ic-red(bD16aCZjPTgwMCZ0PVpIUFNfSUM=)/default.htm');
-//driver.get('https://www.baidu.com');
-driver.takeScreenshot().then(function (data) {
-    var name = 'ss1.png';
-    var screenshotPath = 'public/snapshoot/';
-    fs.writeFileSync(screenshotPath + name, data, 'base64');
+driver.wait(until.titleContains('Logon'),20000).then(function(){
+    driver.takeScreenshot().then(function (data) {
+        var name = 'ss1.png';
+        var screenshotPath = 'public/snapshoot/';
+        fs.writeFileSync(screenshotPath + name, data, 'base64');
+    });
+}).catch(function(e){
+    console.error(e);
 });
+
+
