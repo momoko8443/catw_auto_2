@@ -38,7 +38,12 @@ app.post('/automation/:username',function(req,res){
     var username = req.params.username;
     if(username){
         var account = findAccount(username);
-        automation()
+        if(account){
+            automation(cfg.address,account.username,account.password)
+            .then(function(){
+                
+            });
+        }
     }else{
         doAsyncSeries(cfg);
     }
