@@ -1,15 +1,6 @@
 {
   "schedule": {
-    "startDate": "2017-05-14T00:00:00.000Z",
-    "latestRunDate": "2017-05-15T00:00:00.000Z",
-    "managedUsersCount": 12,
-    "roundCount": 1,
-    "rule": {
-      "dayOfWeek": [
-        3
-      ],
-      "hour": 17,
-      "minute": 30
-    }
+    "managedUsersCount": 13,
+    "roundCount": 1
   }
 }

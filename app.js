@@ -1,12 +1,17 @@
 var schedule = require('node-schedule');
 var fs = require('fs');
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
 var automation = require('./automation');
 var port = process.env.EXPRESS_PORT || 3000;
 
 app.use(express.static(path.join(__dirname,'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 var jobTask;
 var cfg = JSON.parse(fs.readFileSync('./conf2.json'));

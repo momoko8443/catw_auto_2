@@ -16,6 +16,7 @@ function ScheduleDAO() {
                 latestRunDate:schedule.latestRunDate,
                 managedUsersCount:schedule.managedUsersCount,
                 roundCount:schedule.roundCount,
+                status:schedule.status,
                 rule:schedule.rule
             }).write();
     };

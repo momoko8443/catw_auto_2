@@ -1,15 +1,6 @@
-var webdriver = require('selenium-webdriver');
+
 var chrome = require('selenium-webdriver/chrome');
-var phantomjs_exe = require('phantomjs-prebuilt').path;
-var fs = require('fs');
-var customPhantom = webdriver.Capabilities.phantomjs();
-customPhantom.set("phantomjs.binary.path", phantomjs_exe);
-customPhantom.set('phantomjs.cli.args', ['--web-security=no', '--ssl-protocol=any', '--ignore-ssl-errors=true']);
-customPhantom.set('phantomjs.page.settings.userAgent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36');
-customPhantom.set('phantomjs.page.settings.javascriptEnabled', true);
-customPhantom.set('phantomjs.page.settings.loadImages', true);
-customPhantom.set('phantom.cookiesEnabled', true);
-customPhantom.set('phantom.javascriptEnabled', true);
+var phantomjs = require('./capability.phantomjs');
 var proxy = require('selenium-webdriver/proxy');
 var By = webdriver.By;
 var until = webdriver.until;
@@ -97,7 +88,7 @@ module.exports = function (url, username, password) {
     return new Promise(function (resolve, reject) {
         driver = new webdriver.Builder()
             //.forBrowser('chrome')
-            .withCapabilities(customPhantom)
+            .withCapabilities(phantomjs)
             .setProxy(proxy.manual({http: 'web-proxy.houston.hpecorp.net:8080'}))
             .build();
         console.log(username, 'automation task is running');
