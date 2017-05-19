@@ -1,0 +1,15 @@
+{
+  "schedule": {
+    "startDate": "2017-05-19T02:48:08.803Z",
+    "managedUsersCount": 13,
+    "roundCount": 1,
+    "status": 0,
+    "rule": {
+      "dayOfWeek": [
+        3
+      ],
+      "hour": 17,
+      "minute": 30
+    }
+  }
+}

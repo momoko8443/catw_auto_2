@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160726072212",
+    "lowdb": "registry:dt/lowdb#0.15.0+20170308104825",
+    "mocha": "registry:dt/mocha#2.2.5+20170311011848",
+    "node": "registry:dt/node#7.0.0+20170322231424"
+  },
+  "dependencies": {
+    "body-parser": "registry:dt/body-parser#1.16.0+20170321201455",
+    "express": "registry:dt/express#4.0.0+20170118060322",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#4.0.0+20170324160323",
+    "selenium-webdriver": "registry:dt/selenium-webdriver#3.0.0+20170308031439",
+    "serve-static": "registry:dt/serve-static#1.7.1+20161128184045"
+  }
+}
