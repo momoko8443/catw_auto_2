@@ -3,13 +3,13 @@ import {Router, Request, Response} from 'express';
 const router: Router = Router();
 
 router
-    .get('/schedule',function(req,res){
+    .get('/schedule',(req,res)=>{
         res.send('ok');
     })
-    .post('/schedule',function(req,res){
+    .post('/schedule',(req,res)=>{
 
     })
-    .delete('/schedule',function(req,res){
+    .delete('/schedule',(req,res)=>{
 
     });
 

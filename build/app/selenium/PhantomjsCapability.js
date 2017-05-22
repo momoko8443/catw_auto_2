@@ -12,3 +12,4 @@ customPhantom.set('phantomjs.page.settings.javascriptEnabled', true);
 customPhantom.set('phantomjs.page.settings.loadImages', true);
 customPhantom.set('phantom.cookiesEnabled', true);
 customPhantom.set('phantom.javascriptEnabled', true);
+//# sourceMappingURL=PhantomjsCapability.js.map

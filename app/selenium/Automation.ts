@@ -8,7 +8,7 @@ let By = webdriver.By;
 let until = webdriver.until;
 
 
-class Automation {
+export class Automation {
     private driver: webdriver.WebDriver;
 
     private loadLoginPage(url: string): Promise<any> {
@@ -110,18 +110,22 @@ class Automation {
                     return this.copyAndSaveTimesheet();
                 })
                 .then(() => {
-                    this.snapshoot(username + '_' + 'success_' + today);
+                    let fileName = username + '_' + 'success_' + today;
+                    this.snapshoot(fileName);
                     this.driver.quit();
                     console.log('success ' + today + ' ' + username);
-                    resolve();
+                    resolve(fileName+'.png');
                 }).catch((err) => {
                     console.error('CATW_AUTO_2', err);
-                    this.snapshoot(username + '_' + 'failed_' + today);
+                    let fileName = username + '_' + 'failed_' + today;
+                    this.snapshoot(fileName);
                     this.driver.quit();
-                    reject(err);
+                    reject(fileName+'.png');
                 });
         });
     }
 }
+
+//export const automation:Automation = new Automation();
 
 

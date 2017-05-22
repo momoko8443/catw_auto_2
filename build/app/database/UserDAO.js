@@ -10,7 +10,7 @@ var UserDAO = (function () {
         var exist = this.find(user.username);
         if (!exist) {
             this.db.get('users')
-                .push({ username: user.username, password: user.password, displayName: user.displayName, tasks: [] }).write();
+                .push(user).write();
             return true;
         }
         else {
@@ -23,11 +23,14 @@ var UserDAO = (function () {
             return db_user.value();
         }
         else {
-            return null;
+            return;
         }
     };
     UserDAO.prototype.findAll = function () {
         return this.db.get('users').value();
+    };
+    UserDAO.prototype.query = function (filterStatus) {
+        return this.db.get('users').filter({ status: filterStatus }).value();
     };
     UserDAO.prototype.db_find = function (username) {
         return this.db.get('users').find({ username: username });
@@ -35,7 +38,7 @@ var UserDAO = (function () {
     UserDAO.prototype.update = function (user) {
         var exist = this.db_find(user.username);
         if (exist.value()) {
-            exist.assign({ password: user.password, displayName: user.displayName }).write();
+            exist.assign(user).write();
             return true;
         }
         else {
@@ -62,6 +65,16 @@ var UserDAO = (function () {
             return false;
         }
     };
+    UserDAO.prototype.popTask = function (username) {
+        var exist = this.db_find(username);
+        if (exist.value()) {
+            exist.get('tasks').pop().write();
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     UserDAO.prototype.clean = function () {
         this.db.set('users', []).write();
     };
@@ -69,3 +82,4 @@ var UserDAO = (function () {
 }());
 var userDAO = new UserDAO();
 exports.userDAO = userDAO;
+//# sourceMappingURL=UserDAO.js.map

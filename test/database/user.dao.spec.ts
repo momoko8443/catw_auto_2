@@ -4,7 +4,8 @@ import {userDAO} from '../../app/database/UserDAO';
 import * as fs from 'fs';
 import {User} from '../../app/model/User';
 import {Task} from '../../app/model/Task';
-import {TASK_STATUS} from '../../app/common/Constants';
+import {TASK_STATUS,USER_STATUS} from '../../app/common/Constants';
+
 
 describe('test cases for user.dao.js', () => {
     let db_file = 'build/db/users.json';
@@ -29,7 +30,7 @@ describe('test cases for user.dao.js', () => {
     });
 
     it('should find user by username successfully', () => {
-        let user = userDAO.find('60075098');
+        let user:User = userDAO.find('60075098');
         assert.equal(user.username, '60075098');
         let user2 = userDAO.find('60075099');
         assert.equal(user2, null);
@@ -38,7 +39,7 @@ describe('test cases for user.dao.js', () => {
     it('should update user successfully', () => {
         let update_user = new User('60075098', '2017.May', 'momoko');
         let result = userDAO.update(update_user);
-        let user = userDAO.find('60075098');
+        let user:User = userDAO.find('60075098');
         assert.equal(user.displayName, 'momoko');
         assert.equal(result, true);
 
@@ -52,15 +53,33 @@ describe('test cases for user.dao.js', () => {
         let task = new Task(new Date(),TASK_STATUS.SUCCESS,'save timesheet success','xxx.png');//runDate:Date,status:TASK_STATUS,message:strin
         let result = userDAO.pushTask('60075098',task);
         assert.equal(result, true);
-        let user = userDAO.find('60075098');
+        let user:User = userDAO.find('60075098');
         assert.equal(user.tasks.length, 1);
         let result2 = userDAO.pushTask('60075099',task);
         assert.equal(result2, false);
     });
 
+    it('should pop task successfully', ()=>{
+        let count1 = userDAO.find('60075098').tasks.length;
+        userDAO.popTask('60075098');
+        let count2 = userDAO.find('60075098').tasks.length;
+        assert.equal(count1 - 1, count2);
+        let result = userDAO.popTask('60075098');
+        assert.equal(result, true);
+    });
+
     it('should find all users successfully', () =>{
-        let users = userDAO.findAll();
+        let users:Array<User> = userDAO.findAll();
         assert.equal(users.length, 1);
+    });
+
+    it('should query by status successfully', () => {
+        let user = new User('60075100','2017.May','Jake, Zheng',USER_STATUS.DISABLED);
+        let result = userDAO.add(user);
+        assert.equal(result, true);
+        let latest_count = JSON.parse(fs.readFileSync(db_file,'utf-8')).users.length;
+        let filterUsers:Array<User> = userDAO.query(USER_STATUS.ENABLED);
+        assert.equal(filterUsers.length, latest_count-1);
     });
 
 

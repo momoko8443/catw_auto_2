@@ -1,6 +1,7 @@
 import * as low from 'Lowdb';
 import {User} from '../model/User';
 import {Task} from '../model/Task';
+import {USER_STATUS} from '../common/Constants';
 
 class UserDAO{
     private db:low;
@@ -9,45 +10,49 @@ class UserDAO{
         this.db = low('build/db/users.json');
         this.db.defaults({ users: [] }).write();
     }
-    add(user:User) {
+    add(user:User):boolean{
         let exist = this.find(user.username);
         if (!exist) {
             this.db.get('users')
-                .push({ username: user.username, password: user.password, displayName: user.displayName, tasks: [] }).write();
+                .push(user).write();
             return true;
         } else {
             return false;
         }
     }
 
-    find(username:string) {
+    find(username:string){
         let db_user = this.db_find(username);
         if (db_user) {
             return db_user.value();
         } else {
-            return null;
+            return ;
         }
     }
 
-    findAll() {
+    findAll(){
         return this.db.get('users').value();
     }
 
-    private db_find(username:string) {
+    query(filterStatus:USER_STATUS){
+        return this.db.get('users').filter({status:filterStatus}).value();
+    }
+
+    private db_find(username:string):any{
         return this.db.get('users').find({ username: username });
     }
 
-    update(user:User) {
+    update(user:User):boolean{
         let exist = this.db_find(user.username);
         if (exist.value()) {
-            exist.assign({ password: user.password, displayName: user.displayName }).write();
+            exist.assign(user).write();
             return true;
         } else {
             return false;
         }
     }
 
-    delete(username) {
+    delete(username):boolean{
         let exist = this.db_find(username);
         if (exist.value()) {
             this.db.get('users').remove({ username: username }).write();
@@ -57,17 +62,27 @@ class UserDAO{
         }
     }
 
-    pushTask(username:string, task:Task) {
+    pushTask(username:string, task:Task):boolean{
         let exist = this.db_find(username);
         if (exist.value()) {
-            exist.get('tasks').push(task).write()
+            exist.get('tasks').push(task).write();
             return true;
         } else {
             return false;
         }
     }
 
-    clean() {
+    popTask(username:string):boolean{
+        let exist = this.db_find(username);
+        if (exist.value()) {
+            exist.get('tasks').pop().write();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    clean():void{
         this.db.set('users', []).write();
     }
 }

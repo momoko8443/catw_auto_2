@@ -11,3 +11,4 @@ router
     .delete('/schedule', function (req, res) {
 });
 exports.scheduleApiRouter = router;
+//# sourceMappingURL=ScheduleAPI.js.map

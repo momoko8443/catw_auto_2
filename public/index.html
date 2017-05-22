@@ -3,8 +3,8 @@
 <head>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link ref="stylesheet" href="styles/main.css">
+     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/ukulelejs/dist/uku.js"></script>
 </head>
 
@@ -39,13 +39,14 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1>CAWT Auto 2.0</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron
-                and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <h1>CATW Auto 2.0</h1>
+            <p>This is an automation tool for saving CATW timesheet, it's only for internal DXC private cloud teams using.</p>
             <div class="row">
                  <div class="col-md-12">
                     <a class="btn btn-success btn-lg" href="#" role="button">Run &raquo;</a>
                     <a class="btn btn-danger btn-lg" href="#" role="button">Stop &raquo;</a>
+                    <!--<a class="btn btn-default btn-lg" href="#" role="button" uku-onclick="mainCtrl.syncAccounts()">Sync Accounts &raquo;</a>-->
+                    <a class="btn btn-primary btn-lg" href="#" role="button" uku-onclick="mainCtrl.refreshStatus()">Refresh &raquo;</a>
                  </div>
             </div>
         </div>
@@ -53,17 +54,16 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Heading</h2>
-                <a class="btn btn-success" href="#" role="button">Success (2017-05-01) &raquo;</a>
-                <a class="btn btn-danger" href="#" role="button">Failed (2017-05-08) &raquo;</a>
-                <a class="btn btn-success" href="#" role="button">Success (2017-05-15) &raquo;</a>
+        <div class="row" uku-repeat="user in mainCtrl.users">
+            <div class="col-md-12" style="position:relative">
+                <h4>{{user.displayName}}</h4>
+                <span style="position:absolute;top:0;right:0px">
+                    <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)">Execute Now</button>
+                </span>
+                
+                <a href="#" role="button" uku-repeat="task in user.tasks" uku-class="parent.parent.mainCtrl.getTaskStyle(task)">{{parent.parent.mainCtrl.getTaskMessage(task)}}</a>
             </div>
-            <div class="col-md-12">
-                <h2>Heading</h2>
-                <p><a class="btn btn-danger" href="#" role="button">Failed &raquo;</a></p>
-            </div>
+            <hr>
         </div>
 
         <hr>
@@ -76,6 +76,60 @@
 </body>
 <script>
     var uku = new Ukulele();
+    var mainCtrl = new MainController(uku);
+    uku.registerController('mainCtrl', mainCtrl);
+    uku.addListener(Ukulele.INITIALIZED,function(e){
+        mainCtrl.init();
+    });
+    uku.init();
+
+    function MainController(uku){
+        this.users = [];
+        var self = this;
+        this.init = function(){
+            $.get('/api/users',function(result){
+                self.users = result;
+                uku.refresh('mainCtrl');
+            });
+        };
+
+        this.execute = function(username){
+            //console.log(username);
+            $.ajax({
+                url:'/api/users/'+username+'/tasks',
+                method:'POST',
+                success:function(result){
+                    self.init();
+                }
+            })
+
+        };
+
+        this.syncAccounts = function(){
+            $.ajax({
+                url:'/api/users/sync',
+                method:'PUT',
+                success:function(result){
+                    self.init();
+                }
+            });
+        };
+
+        this.refreshStatus = function(){
+            this.init();
+        };
+
+        this.getTaskStyle = function(task){
+            if(task.status === 0){
+                return 'btn btn-success';
+            }else{
+                return 'btn btn-danger';
+            }
+        };
+        this.getTaskMessage = function(task){
+            return task.runDate.slice(0, 10);
+        };
+    }
 </script>
 
 </html>

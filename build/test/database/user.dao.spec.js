@@ -51,9 +51,25 @@ describe('test cases for user.dao.js', function () {
         var result2 = UserDAO_1.userDAO.pushTask('60075099', task);
         assert.equal(result2, false);
     });
+    it('should pop task successfully', function () {
+        var count1 = UserDAO_1.userDAO.find('60075098').tasks.length;
+        UserDAO_1.userDAO.popTask('60075098');
+        var count2 = UserDAO_1.userDAO.find('60075098').tasks.length;
+        assert.equal(count1 - 1, count2);
+        var result = UserDAO_1.userDAO.popTask('60075098');
+        assert.equal(result, true);
+    });
     it('should find all users successfully', function () {
         var users = UserDAO_1.userDAO.findAll();
         assert.equal(users.length, 1);
+    });
+    it('should query by status successfully', function () {
+        var user = new User_1.User('60075100', '2017.May', 'Jake, Zheng', Constants_1.USER_STATUS.DISABLED);
+        var result = UserDAO_1.userDAO.add(user);
+        assert.equal(result, true);
+        var latest_count = JSON.parse(fs.readFileSync(db_file, 'utf-8')).users.length;
+        var filterUsers = UserDAO_1.userDAO.query(Constants_1.USER_STATUS.ENABLED);
+        assert.equal(filterUsers.length, latest_count - 1);
     });
     it('should delete user successfully', function () {
         var old_count = JSON.parse(fs.readFileSync(db_file, 'utf-8')).users.length;
@@ -72,3 +88,4 @@ describe('test cases for user.dao.js', function () {
         assert.equal(count, 0);
     });
 });
+//# sourceMappingURL=user.dao.spec.js.map

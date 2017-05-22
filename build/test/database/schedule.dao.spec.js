@@ -26,3 +26,4 @@ describe('test cases for schedule.dao.js', function () {
         assert.equal(schedule.managedUsersCount, 13);
     });
 });
+//# sourceMappingURL=schedule.dao.spec.js.map

@@ -107,17 +107,22 @@ var Automation = (function () {
                 return _this.copyAndSaveTimesheet();
             })
                 .then(function () {
-                _this.snapshoot(username + '_' + 'success_' + today);
+                var fileName = username + '_' + 'success_' + today;
+                _this.snapshoot(fileName);
                 _this.driver.quit();
                 console.log('success ' + today + ' ' + username);
-                resolve();
+                resolve(fileName + '.png');
             }).catch(function (err) {
                 console.error('CATW_AUTO_2', err);
-                _this.snapshoot(username + '_' + 'failed_' + today);
+                var fileName = username + '_' + 'failed_' + today;
+                _this.snapshoot(fileName);
                 _this.driver.quit();
-                reject(err);
+                reject(fileName + '.png');
             });
         });
     };
     return Automation;
 }());
+exports.Automation = Automation;
+//export const automation:Automation = new Automation();
+//# sourceMappingURL=Automation.js.map
