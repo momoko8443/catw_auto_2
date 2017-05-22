@@ -1,9 +1,7 @@
 
 enum SCHEDULE_STATUS{
-    WAITING,
-    FINISHED,
-    RUNNING,
-    BROKENDOWN
+    START,
+    STOP
 }
 
 enum TASK_STATUS {

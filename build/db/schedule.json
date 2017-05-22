@@ -1,9 +1,8 @@
 {
   "schedule": {
-    "startDate": "2017-05-22T08:07:47.187Z",
-    "managedUsersCount": 13,
-    "roundCount": 1,
-    "status": 0,
+    "startDate": "2017-05-22T12:44:18.003Z",
+    "status": 1,
+    "isRunning": false,
     "rule": {
       "dayOfWeek": [
         3

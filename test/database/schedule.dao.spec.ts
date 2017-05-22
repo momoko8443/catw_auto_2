@@ -15,14 +15,13 @@ describe('test cases for schedule.dao.js',  () =>{
     });
     it('should update schedule successfully',()=>{
         var rule = new Rule([3],17,30);
-        var update_schedule = new Schedule(new Date(),12,0,SCHEDULE_STATUS.WAITING,rule);
+        var update_schedule = new Schedule(new Date(),SCHEDULE_STATUS.START,false,rule);
         scheduleDAO.update(update_schedule);
         let schedule = scheduleDAO.find();
-        assert.equal(schedule.managedUsersCount,12);
-        assert.equal(schedule.status,SCHEDULE_STATUS.WAITING);
-        update_schedule.managedUsersCount = 13;
-        update_schedule.round = 1;
+     
+        assert.equal(schedule.status,SCHEDULE_STATUS.START);
+        update_schedule.status = SCHEDULE_STATUS.STOP;
         scheduleDAO.update(update_schedule);
-        assert.equal(schedule.managedUsersCount,13);
+        assert.equal(schedule.status,SCHEDULE_STATUS.STOP);
     });
 });

@@ -31,24 +31,14 @@ class AutomationController{
         }
     }
 
-    refreshStatus(username:string){
+    batchExecute(users){
 
+        this.doAsyncSeries(this.url,users);
     }
 
-    refreshAllStatus(){
 
-    }
-
-    createScheduleTask(rule:Rule){
-
-    }
-
-    deleteScheduleTask(){
-
-    }
 
     private  doAsyncSeries(url,users) {
-        
         return users.reduce(function (promise, user) {
             return promise.catch(function(error){
                 return;

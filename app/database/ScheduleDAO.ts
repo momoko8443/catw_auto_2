@@ -16,10 +16,11 @@ class ScheduleDAO{
         this.db.get('schedule').assign(
             {
                 startDate:schedule.startDate,
-                latestRunDate:schedule.previousDate,
-                managedUsersCount:schedule.managedUsersCount,
-                roundCount:schedule.round,
+                // latestRunDate:schedule.previousDate,
+                // managedUsersCount:schedule.managedUsersCount,
+                // roundCount:schedule.round,
                 status:schedule.status,
+                isRunning:schedule.isRunning,
                 rule:schedule.rule
             }).write();
     };
