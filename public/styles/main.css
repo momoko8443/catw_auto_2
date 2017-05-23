@@ -3,3 +3,9 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
+
+user-item{
+  border-bottom-width: 1px;
+  border-bottom-color: #cccccc;
+}

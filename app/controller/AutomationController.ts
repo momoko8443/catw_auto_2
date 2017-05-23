@@ -5,6 +5,7 @@ import {User} from '../model/User';
 import {Automation} from '../selenium/Automation';
 import {TASK_STATUS} from '../common/Constants';
 import {Task} from '../model/Task';
+import {scheduleDAO} from '../database/ScheduleDAO';
 
 class AutomationController{
     private url:string;
@@ -13,6 +14,7 @@ class AutomationController{
     }
 
     executeImmediately(username:string){
+        // improve to Promise mode;
         let user = userDAO.find(username);
         if(user && !user.isRunning){
             userDAO.update({username:user.username,isRunning:true} as User);
@@ -32,10 +34,36 @@ class AutomationController{
     }
 
     batchExecute(users){
-
-        this.doAsyncSeries(this.url,users);
+        let currentSchedule = scheduleDAO.find();
+        if(!currentSchedule.isRunning){
+            currentSchedule.isRunning = true;
+            scheduleDAO.update(currentSchedule);
+            this.doParallel(this.url,users).then((result)=>{
+                currentSchedule.isRunning = false;
+                scheduleDAO.update(currentSchedule);
+            }).catch((err)=>{
+                currentSchedule.isRunning = false;
+                scheduleDAO.update(currentSchedule);
+            });
+        }
     }
 
+    private doParallel(url,users){
+        return new Promise((resolve, reject)=>{
+            let promiseArray:Array<any> = [];
+            users.forEach((user) => {
+                let automation = new Automation();
+                promiseArray.push(automation.execute(url,user.username,user.password));
+            });
+            Promise.all(promiseArray)
+            .then((result)=>{
+                resolve();
+
+            }).catch((err)=>{
+                reject();
+            });
+        });
+    }
 
 
     private  doAsyncSeries(url,users) {

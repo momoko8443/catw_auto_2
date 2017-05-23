@@ -5,47 +5,89 @@
       "password": "2017.May",
       "displayName": "Chen, De-Jun",
       "status": 0,
-      "tasks": [],
-      "isRunning": true
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:51:40.364Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "20383767_success_2017-05-23.png"
+        }
+      ],
+      "isRunning": false
     },
     {
       "username": "60058432",
       "password": "2017.May",
       "displayName": "Cheng, Jian Hua",
       "status": 0,
-      "tasks": [],
-      "isRunning": true
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:08.920Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60058432_success_2017-05-23.png"
+        }
+      ],
+      "isRunning": false
     },
     {
       "username": "60067210",
       "password": "2017.May",
       "displayName": "Li, Peng",
       "status": 0,
-      "tasks": [],
-      "isRunning": true
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:09.378Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60067210_success_2017-05-23.png"
+        }
+      ],
+      "isRunning": false
     },
     {
       "username": "60068136",
       "password": "2017.May",
       "displayName": "Wang, Zi-Hong",
       "status": 0,
-      "tasks": [],
-      "isRunning": true
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:10.539Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60068136_success_2017-05-23.png"
+        }
+      ],
+      "isRunning": false
     },
     {
       "username": "60070045",
       "password": "2017.May",
       "displayName": "Lu, Yu",
       "status": 0,
-      "tasks": [],
-      "isRunning": true
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:11.593Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60070045_success_2017-05-23.png"
+        }
+      ],
+      "isRunning": false
     },
     {
       "username": "60075098",
       "password": "2017.May",
       "displayName": "Zheng, Huibin",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:13.392Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075098_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -53,7 +95,14 @@
       "password": "2017.May",
       "displayName": "Xu, Hai",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:14.583Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60074938_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -61,7 +110,14 @@
       "password": "2017.May",
       "displayName": "Yu, Marvel",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:30.487Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60076280_failed_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -69,7 +125,14 @@
       "password": "2017.May",
       "displayName": "Zhao, Qian",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:16.447Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075123_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -77,7 +140,14 @@
       "password": "2017.May",
       "displayName": "Tian, Xia",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:17.055Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "21610770_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -85,7 +155,14 @@
       "password": "2017.May",
       "displayName": "Tang, Jing",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:18.884Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079305_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -93,7 +170,14 @@
       "password": "2017.May",
       "displayName": "Xu, Zhixing",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:19.909Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60082036_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -101,7 +185,14 @@
       "password": "2017.May",
       "displayName": "Li, Yiqing",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:20.679Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079319_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -109,7 +200,14 @@
       "password": "2017.May",
       "displayName": "Yang, Yong",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:20.446Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60126165_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -117,7 +215,14 @@
       "password": "2017.May",
       "displayName": "Zhu, Huijing",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:20.347Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "70000632_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     },
     {
@@ -125,7 +230,14 @@
       "password": "2017.May",
       "displayName": "Wang, Yulan",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-05-23T00:52:20.598Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75000567_success_2017-05-23.png"
+        }
+      ],
       "isRunning": false
     }
   ]

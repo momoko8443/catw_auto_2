@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link ref="stylesheet" href="styles/main.css">
-     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/ukulelejs/dist/uku.js"></script>
 </head>
@@ -12,16 +12,16 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                </button>-->
+                <a class="navbar-brand" href="#">Hello World</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <!--<div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
                         <input type="text" placeholder="Email" class="form-control">
@@ -31,7 +31,7 @@
                     </div>
                     <button type="submit" class="btn btn-success">Sign in</button>
                 </form>
-            </div>
+            </div>-->
             <!--/.navbar-collapse -->
         </div>
     </nav>
@@ -42,94 +42,200 @@
             <h1>CATW Auto 2.0</h1>
             <p>This is an automation tool for saving CATW timesheet, it's only for internal DXC private cloud teams using.</p>
             <div class="row">
-                 <div class="col-md-12">
-                    <a class="btn btn-success btn-lg" href="#" role="button">Run &raquo;</a>
-                    <a class="btn btn-danger btn-lg" href="#" role="button">Stop &raquo;</a>
+                <div class="col-md-12">
+                    <h3 style="color:#DB504A">{{mainCtrl.getScheduleMessage(mainCtrl.schedule)}}</h3>
+                    <a class="btn btn-primary btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.startSchedule()" uku-render="mainCtrl.runButtonState(mainCtrl.schedule)">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
+                    </a>
+                    <a class="btn btn-danger btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.stopSchedule" uku-render="mainCtrl.stopButtonState(mainCtrl.schedule)">
+                        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+                    </a>
                     <!--<a class="btn btn-default btn-lg" href="#" role="button" uku-onclick="mainCtrl.syncAccounts()">Sync Accounts &raquo;</a>-->
-                    <a class="btn btn-primary btn-lg" href="#" role="button" uku-onclick="mainCtrl.refreshStatus()">Refresh &raquo;</a>
-                 </div>
+                    <a class="btn btn-default btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.refreshStatus()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container">
         <!-- Example row of columns -->
-        <div class="row" uku-repeat="user in mainCtrl.users">
+        <div class="row user-item" uku-repeat="user in mainCtrl.users">
             <div class="col-md-12" style="position:relative">
                 <h4>{{user.displayName}}</h4>
                 <span style="position:absolute;top:0;right:0px">
-                    <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)">Execute Now</button>
+                    <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Execute Now
+                    </button>
                 </span>
-                
-                <a href="#" role="button" uku-repeat="task in user.tasks" uku-class="parent.parent.mainCtrl.getTaskStyle(task)">{{parent.parent.mainCtrl.getTaskMessage(task)}}</a>
+
+                <a href="javascript:;" role="button" style="margin-left:8px" uku-repeat="task in user.tasks" uku-class="parent.parent.mainCtrl.getTaskStyle(task)" uku-onclick="parent.parent.mainCtrl.showTaskDetail(task)">
+                    <span uku-class="parent.parent.mainCtrl.getTaskStyle2(task)" aria-hidden="true">{{parent.parent.mainCtrl.getTaskMessage(task)}}</span> 
+                </a>
+
             </div>
             <hr>
         </div>
-
-        <hr>
 
         <footer>
             <p>&copy; 2016 Company, Inc.</p>
         </footer>
     </div>
     <!-- /container -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">CATW_AUTO 2.0</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{mainCtrl.getTaskRunDate()}}</p>
+                    <img uku-src="mainCtrl.getTaskSnapshoot()" width="100%">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </body>
 <script>
     var uku = new Ukulele();
     var mainCtrl = new MainController(uku);
     uku.registerController('mainCtrl', mainCtrl);
-    uku.addListener(Ukulele.INITIALIZED,function(e){
+    uku.addListener(Ukulele.INITIALIZED, function (e) {
         mainCtrl.init();
     });
     uku.init();
 
-    function MainController(uku){
+    function MainController(uku) {
         this.users = [];
+        this.schedule = {};
+        this.currentTask = {};
         var self = this;
-        this.init = function(){
-            $.get('/api/users',function(result){
+        this.init = function () {
+            $.get('/api/users', function (result) {
                 self.users = result;
-                uku.refresh('mainCtrl');
+                $.get('/api/schedule', function (result) {
+                    self.schedule = result;
+                    uku.refresh('mainCtrl');
+                });
             });
         };
 
-        this.execute = function(username){
+        this.startSchedule = function () {
+            $.ajax({
+                url:'/api/schedule',
+                method:'POST',
+                data: JSON.stringify({ "dayOfWeek": [1,2,3,4,5,6,7],"hour":16,"minute": 30}),
+                success:function(){
+                    uku.refresh('mainCtrl');
+                }
+            });
+        };
+        this.stopSchedule = function () {
+            $.ajax({
+                url:'/api/schedule',
+                method:'DELETE',
+                success:function(){
+                    uku.refresh('mainCtrl');
+                }
+            });
+        };
+
+        this.runButtonState = function (schedule) {
+            if (schedule.status === 0) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+        this.stopButtonState = function (schedule) {
+            return !this.runButtonState(schedule);
+        };
+
+        this.execute = function (username) {
             //console.log(username);
             $.ajax({
-                url:'/api/users/'+username+'/tasks',
-                method:'POST',
-                success:function(result){
+                url: '/api/users/' + username + '/tasks',
+                method: 'POST',
+                success: function (result) {
                     self.init();
                 }
             })
 
         };
 
-        this.syncAccounts = function(){
+        this.syncAccounts = function () {
             $.ajax({
-                url:'/api/users/sync',
-                method:'PUT',
-                success:function(result){
+                url: '/api/users/sync',
+                method: 'PUT',
+                success: function (result) {
                     self.init();
                 }
             });
         };
 
-        this.refreshStatus = function(){
+        this.refreshStatus = function () {
             this.init();
         };
 
-        this.getTaskStyle = function(task){
-            if(task.status === 0){
+        this.getTaskStyle = function (task) {
+            if (task.status === 0) {
                 return 'btn btn-success';
-            }else{
+            } else {
                 return 'btn btn-danger';
             }
         };
-        this.getTaskMessage = function(task){
-            return task.runDate.slice(0, 10);
+
+        this.getTaskStyle2 = function (task) {
+            if (task.status === 0) {
+                return 'glyphicon glyphicon-ok-circle';
+            } else {
+                return 'glyphicon glyphicon-remove-circle';
+            }
+        };
+        this.getTaskMessage = function (task) {
+            return ' ' + task.runDate.slice(0, 10);
+        };
+
+        this.showTaskDetail = function (task) {
+            $('#myModal').modal('toggle');
+            this.currentTask = task;
+            uku.refresh('mainCtrl');
+        };
+        this.getScheduleMessage = function (schedule) {
+            var status = '';
+            if (schedule.status === 0) {
+                status = 'running';
+            } else {
+                status = 'stopped';
+            }
+            var description = ' (@17:30 each Monday)'
+            return 'Schedule task is ' + status + description;
+        };
+
+        this.getTaskRunDate = function(){
+            if(this.currentTask && this.currentTask.runDate){
+                return ' ' + this.currentTask.runDate.slice(0, 10);
+            }
+            return '';
+            
+        };
+        this.getTaskSnapshoot = function(){
+            if(this.currentTask && this.currentTask.snapshoot){
+                return 'snapshoot/'+this.currentTask.snapshoot;
+            }
+            return ''; 
         };
     }
+
 </script>
 
 </html>

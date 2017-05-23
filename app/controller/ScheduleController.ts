@@ -8,7 +8,7 @@ import {userDAO} from '../database/UserDAO';
 import * as ScheduleTask from 'node-schedule';
 class ScheduleController{
     private jobTask;
-    starSchedult(_rule:Rule){
+    starSchedule(_rule:Rule){
         let currentSchedule = scheduleDAO.find();
         currentSchedule.startDate = new Date();
         currentSchedule.status = SCHEDULE_STATUS.START;
@@ -33,6 +33,9 @@ class ScheduleController{
         let currentSchedule = scheduleDAO.find();
         currentSchedule.status = SCHEDULE_STATUS.STOP;
         scheduleDAO.update(currentSchedule);
+        if (this.jobTask) {
+            this.jobTask.cancel();
+        }
     }
 
     getSchedule():Schedule{
