@@ -39,7 +39,7 @@ export class Automation {
 
             login_button.click();
 
-            this.driver.wait(until.titleIs('HPE-IC'), 10000).then(() => {
+            this.driver.wait(until.titleIs('DXC-IC'), 10000).then(() => {
                 resolve();
             }).catch((e) => {
                 reject({ code: 401, message: 'login failed' });
@@ -68,15 +68,20 @@ export class Automation {
         return new Promise((resolve, reject) => {
             this.driver.findElement(By.id('PWeekButton')).click();
             this.driver.findElement(By.id('CopyToFutu')).click();
-            this.driver.findElement(By.id('DateButton')).click();
             this.driver.findElement(By.id('SaveButton')).click();
-            this.driver.findElement(By.css('span>font')).getText().then((result) => {
-                if (result === 'Data has been saved.') {
-                    resolve();
-                } else {
-                    reject();
+            this.driver.findElements(By.css('span>font')).then((elements) => {
+                if(elements.length === 1){
+                    elements[0].getText().then((result) => {
+                        if (result === 'Data has been saved.') {
+                            resolve();
+                        } else {
+                            reject();
+                        }
+                    });
+                }else{
+                    reject({ code: 400, message: 'timesheet of previous week is invalid' });
                 }
-            });
+            });      
         });
     }
 

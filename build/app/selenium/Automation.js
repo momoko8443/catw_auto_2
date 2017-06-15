@@ -35,7 +35,7 @@ var Automation = (function () {
             _this.driver.executeScript('document.getElementById("sap-language").value = "ZH"');
             sap_language_dropdown.sendKeys('Chinese');
             login_button.click();
-            _this.driver.wait(until.titleIs('HPE-IC'), 10000).then(function () {
+            _this.driver.wait(until.titleIs('DXC-IC'), 10000).then(function () {
                 resolve();
             }).catch(function (e) {
                 reject({ code: 401, message: 'login failed' });
@@ -65,14 +65,20 @@ var Automation = (function () {
         return new Promise(function (resolve, reject) {
             _this.driver.findElement(By.id('PWeekButton')).click();
             _this.driver.findElement(By.id('CopyToFutu')).click();
-            _this.driver.findElement(By.id('DateButton')).click();
             _this.driver.findElement(By.id('SaveButton')).click();
-            _this.driver.findElement(By.css('span>font')).getText().then(function (result) {
-                if (result === 'Data has been saved.') {
-                    resolve();
+            _this.driver.findElements(By.css('span>font')).then(function (elements) {
+                if (elements.length === 1) {
+                    elements[0].getText().then(function (result) {
+                        if (result === 'Data has been saved.') {
+                            resolve();
+                        }
+                        else {
+                            reject();
+                        }
+                    });
                 }
                 else {
-                    reject();
+                    reject({ code: 400, message: 'timesheet of previous week is invalid' });
                 }
             });
         });

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha build/test/test.js",
-    "server": "node build/app/Server.js"
+    "server": "tsc && node build/app/Server.js"
   },
   "keywords": [],
   "author": "",
