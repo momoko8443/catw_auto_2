@@ -18,10 +18,10 @@ describe('test cases for schedule.dao.js', function () {
         var update_schedule = new Schedule_1.Schedule(new Date(), Constants_1.SCHEDULE_STATUS.START, false, rule);
         ScheduleDAO_1.scheduleDAO.update(update_schedule);
         var schedule = ScheduleDAO_1.scheduleDAO.find();
-        assert.equal(schedule.status, Constants_1.SCHEDULE_STATUS.START);
-        update_schedule.status = Constants_1.SCHEDULE_STATUS.STOP;
+        assert.equal(schedule['status'], Constants_1.SCHEDULE_STATUS.START);
+        update_schedule['status'] = Constants_1.SCHEDULE_STATUS.STOP;
         ScheduleDAO_1.scheduleDAO.update(update_schedule);
-        assert.equal(schedule.status, Constants_1.SCHEDULE_STATUS.STOP);
+        assert.equal(schedule['status'], Constants_1.SCHEDULE_STATUS.STOP);
     });
 });
 //# sourceMappingURL=schedule.dao.spec.js.map

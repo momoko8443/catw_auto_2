@@ -10,9 +10,9 @@ var ScheduleController = (function () {
     }
     ScheduleController.prototype.starSchedule = function (_rule) {
         var currentSchedule = ScheduleDAO_1.scheduleDAO.find();
-        currentSchedule.startDate = new Date();
-        currentSchedule.status = Constants_1.SCHEDULE_STATUS.START;
-        currentSchedule.rule = _rule;
+        currentSchedule['startDate'] = new Date();
+        currentSchedule['status'] = Constants_1.SCHEDULE_STATUS.START;
+        currentSchedule['rule'] = _rule;
         ScheduleDAO_1.scheduleDAO.update(currentSchedule);
         var rule = new ScheduleTask.RecurrenceRule();
         rule.dayOfWeek = _rule.dayOfWeek;
@@ -28,7 +28,7 @@ var ScheduleController = (function () {
     };
     ScheduleController.prototype.stopSchedule = function () {
         var currentSchedule = ScheduleDAO_1.scheduleDAO.find();
-        currentSchedule.status = Constants_1.SCHEDULE_STATUS.STOP;
+        currentSchedule['status'] = Constants_1.SCHEDULE_STATUS.STOP;
         ScheduleDAO_1.scheduleDAO.update(currentSchedule);
         if (this.jobTask) {
             this.jobTask.cancel();

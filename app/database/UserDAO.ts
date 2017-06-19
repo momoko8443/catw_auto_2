@@ -1,4 +1,4 @@
-import * as low from 'Lowdb';
+import low = require('Lowdb');
 import {User} from '../model/User';
 import {Task} from '../model/Task';
 import {USER_STATUS} from '../common/Constants';

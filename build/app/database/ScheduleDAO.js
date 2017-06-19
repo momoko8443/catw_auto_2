@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var low = require("Lowdb");
+var Lowdb = require("lowdb");
 var ScheduleDAO = (function () {
     function ScheduleDAO() {
-        this.db = low('build/db/schedule.json');
+        this.db = new Lowdb('build/db/schedule.json');
         this.db.defaults({ schedule: {} }).write();
     }
     ScheduleDAO.prototype.find = function () {

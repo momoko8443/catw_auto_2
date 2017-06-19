@@ -19,9 +19,9 @@ describe('test cases for schedule.dao.js',  () =>{
         scheduleDAO.update(update_schedule);
         let schedule = scheduleDAO.find();
      
-        assert.equal(schedule.status,SCHEDULE_STATUS.START);
-        update_schedule.status = SCHEDULE_STATUS.STOP;
+        assert.equal(schedule['status'],SCHEDULE_STATUS.START);
+        update_schedule['status'] = SCHEDULE_STATUS.STOP;
         scheduleDAO.update(update_schedule);
-        assert.equal(schedule.status,SCHEDULE_STATUS.STOP);
+        assert.equal(schedule['status'],SCHEDULE_STATUS.STOP);
     });
 });

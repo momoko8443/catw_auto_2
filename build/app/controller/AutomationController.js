@@ -32,14 +32,14 @@ var AutomationController = (function () {
     };
     AutomationController.prototype.batchExecute = function (users) {
         var currentSchedule = ScheduleDAO_1.scheduleDAO.find();
-        if (!currentSchedule.isRunning) {
-            currentSchedule.isRunning = true;
+        if (!currentSchedule['isRunning']) {
+            currentSchedule['isRunning'] = true;
             ScheduleDAO_1.scheduleDAO.update(currentSchedule);
             this.doParallel(this.url, users).then(function (result) {
-                currentSchedule.isRunning = false;
+                currentSchedule['isRunning'] = false;
                 ScheduleDAO_1.scheduleDAO.update(currentSchedule);
             }).catch(function (err) {
-                currentSchedule.isRunning = false;
+                currentSchedule['isRunning'] = false;
                 ScheduleDAO_1.scheduleDAO.update(currentSchedule);
             });
         }

@@ -6,7 +6,7 @@ import {Automation} from '../selenium/Automation';
 import {TASK_STATUS} from '../common/Constants';
 import {Task} from '../model/Task';
 import {scheduleDAO} from '../database/ScheduleDAO';
-
+import {Schedule} from '../model/Schedule';
 class AutomationController{
     private url:string;
     constructor(url:string){
@@ -35,15 +35,15 @@ class AutomationController{
 
     batchExecute(users){
         let currentSchedule = scheduleDAO.find();
-        if(!currentSchedule.isRunning){
-            currentSchedule.isRunning = true;
-            scheduleDAO.update(currentSchedule);
+        if(!currentSchedule['isRunning']){
+            currentSchedule['isRunning'] = true;
+            scheduleDAO.update(currentSchedule as Schedule);
             this.doParallel(this.url,users).then((result)=>{
-                currentSchedule.isRunning = false;
-                scheduleDAO.update(currentSchedule);
+                currentSchedule['isRunning'] = false;
+                scheduleDAO.update(currentSchedule as Schedule);
             }).catch((err)=>{
-                currentSchedule.isRunning = false;
-                scheduleDAO.update(currentSchedule);
+                currentSchedule['isRunning'] = false;
+                scheduleDAO.update(currentSchedule as Schedule);
             });
         }
     }

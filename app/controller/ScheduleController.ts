@@ -10,10 +10,10 @@ class ScheduleController{
     private jobTask;
     starSchedule(_rule:Rule){
         let currentSchedule = scheduleDAO.find();
-        currentSchedule.startDate = new Date();
-        currentSchedule.status = SCHEDULE_STATUS.START;
-        currentSchedule.rule = _rule;
-        scheduleDAO.update(currentSchedule);
+        currentSchedule['startDate'] = new Date();
+        currentSchedule['status'] = SCHEDULE_STATUS.START;
+        currentSchedule['rule'] = _rule;
+        scheduleDAO.update(currentSchedule as Schedule);
 
         let rule = new ScheduleTask.RecurrenceRule();
         rule.dayOfWeek = _rule.dayOfWeek;
@@ -31,15 +31,15 @@ class ScheduleController{
 
     stopSchedule(){
         let currentSchedule = scheduleDAO.find();
-        currentSchedule.status = SCHEDULE_STATUS.STOP;
-        scheduleDAO.update(currentSchedule);
+        currentSchedule['status'] = SCHEDULE_STATUS.STOP;
+        scheduleDAO.update(currentSchedule as Schedule);
         if (this.jobTask) {
             this.jobTask.cancel();
         }
     }
 
     getSchedule():Schedule{
-        return scheduleDAO.find();
+        return scheduleDAO.find() as Schedule;
     }
 }
 

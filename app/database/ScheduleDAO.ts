@@ -1,10 +1,10 @@
-import * as low from 'Lowdb';
+import Lowdb = require('lowdb');
 import {Schedule} from '../model/Schedule';
 
 class ScheduleDAO{
-    private db:low;
+    private db:Lowdb;
     constructor(){
-        this.db = low('build/db/schedule.json');
+        this.db = new Lowdb('build/db/schedule.json');
         this.db.defaults({ schedule: {} }).write();
     }
 
