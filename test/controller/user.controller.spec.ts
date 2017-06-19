@@ -17,7 +17,7 @@ describe('test cases for schedule.dao.js',  () =>{
         let users:Array<User> = config.users as Array<User>;
         let count:number = users.length;
         userController.syncManagedUsers(users);
-        let existUsers:Array<User> = userDAO.findAll();
+        let existUsers:Array<User> = userDAO.findAll() as Array<User>;
         assert.equal(existUsers.length, count);
     });
 });

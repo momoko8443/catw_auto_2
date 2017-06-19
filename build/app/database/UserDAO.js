@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var low = require("Lowdb");
+var Lowdb = require("lowdb");
 var UserDAO = (function () {
     function UserDAO() {
-        this.db = low('build/db/users.json');
+        this.db = new Lowdb('build/db/users.json');
         this.db.defaults({ users: [] }).write();
     }
     UserDAO.prototype.add = function (user) {

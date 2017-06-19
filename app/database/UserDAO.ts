@@ -1,13 +1,13 @@
-import low = require('Lowdb');
+import Lowdb = require('lowdb');
 import {User} from '../model/User';
 import {Task} from '../model/Task';
 import {USER_STATUS} from '../common/Constants';
 
 class UserDAO{
-    private db:low;
+    private db:Lowdb;
     
     constructor(){
-        this.db = low('build/db/users.json');
+        this.db = new Lowdb('build/db/users.json');
         this.db.defaults({ users: [] }).write();
     }
     add(user:User):boolean{

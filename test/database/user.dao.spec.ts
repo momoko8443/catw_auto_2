@@ -69,7 +69,7 @@ describe('test cases for user.dao.js', () => {
     });
 
     it('should find all users successfully', () =>{
-        let users:Array<User> = userDAO.findAll();
+        let users:Array<User> = userDAO.findAll() as Array<User>;
         assert.equal(users.length, 1);
     });
 
@@ -78,7 +78,7 @@ describe('test cases for user.dao.js', () => {
         let result = userDAO.add(user);
         assert.equal(result, true);
         let latest_count = JSON.parse(fs.readFileSync(db_file,'utf-8')).users.length;
-        let filterUsers:Array<User> = userDAO.query(USER_STATUS.ENABLED);
+        let filterUsers:Array<User> = userDAO.query(USER_STATUS.ENABLED) as Array<User>;
         assert.equal(filterUsers.length, latest_count-1);
     });
 

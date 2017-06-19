@@ -12,7 +12,7 @@ class UserController{
     }
 
     syncManagedUsers(users:Array<User>){
-        let existUsers = userDAO.query(USER_STATUS.ENABLED);
+        let existUsers:Array<User> = userDAO.query(USER_STATUS.ENABLED) as Array<User>;
         existUsers.forEach( (existUser) => {
             let needRemove = true;
             users.forEach( (user) => {
