@@ -47,7 +47,7 @@
                     <a class="btn btn-primary btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.startSchedule()" uku-render="mainCtrl.runButtonState(mainCtrl.schedule)">
                         <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
                     </a>
-                    <a class="btn btn-danger btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.stopSchedule" uku-render="mainCtrl.stopButtonState(mainCtrl.schedule)">
+                    <a class="btn btn-danger btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.stopSchedule()" uku-render="mainCtrl.stopButtonState(mainCtrl.schedule)">
                         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
                     </a>
                     <!--<a class="btn btn-default btn-lg" href="#" role="button" uku-onclick="mainCtrl.syncAccounts()">Sync Accounts &raquo;</a>-->
@@ -115,7 +115,6 @@
 
     function MainController(uku) {
         this.users = [];
-        this.schedule = {};
         this.currentTask = {};
         var self = this;
         this.init = function () {
@@ -132,9 +131,13 @@
             $.ajax({
                 url:'/api/schedule',
                 method:'POST',
-                data: JSON.stringify({ "dayOfWeek": [1,2,3,4,5,6,7],"hour":16,"minute": 30}),
+                data: JSON.stringify({ "dayOfWeek": [1],"hour":16,"minute": 30}),
                 success:function(){
-                    uku.refresh('mainCtrl');
+                    //uku.refresh('mainCtrl');
+                    $.get('/api/schedule', function (result) {
+                        self.schedule = result;
+                        uku.refresh('mainCtrl');
+                    });
                 }
             });
         };
@@ -143,21 +146,25 @@
                 url:'/api/schedule',
                 method:'DELETE',
                 success:function(){
-                    uku.refresh('mainCtrl');
+                    //uku.refresh('mainCtrl');
+                    $.get('/api/schedule', function (result) {
+                        self.schedule = result;
+                        uku.refresh('mainCtrl');
+                    });
                 }
             });
         };
 
-        this.runButtonState = function (schedule) {
-            if (schedule.status === 0) {
+        this.runButtonState = function () {
+            if (this.schedule && this.schedule.status === 0) {
                 return false;
             } else {
                 return true;
             }
         };
 
-        this.stopButtonState = function (schedule) {
-            return !this.runButtonState(schedule);
+        this.stopButtonState = function () {
+            return !this.runButtonState();
         };
 
         this.execute = function (username) {
@@ -210,14 +217,14 @@
             this.currentTask = task;
             uku.refresh('mainCtrl');
         };
-        this.getScheduleMessage = function (schedule) {
+        this.getScheduleMessage = function () {
             var status = '';
-            if (schedule.status === 0) {
+            if (this.schedule && this.schedule.status === 0) {
                 status = 'running';
             } else {
                 status = 'stopped';
             }
-            var description = ' (@17:30 each Monday)'
+            var description = ' (@16:30 each Monday)'
             return 'Schedule task is ' + status + description;
         };
 

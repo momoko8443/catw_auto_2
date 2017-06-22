@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha build/test/test.js",
-    "server": "tsc && node build/app/Server.js"
+    "init_db": "node build/app/Init.js",
+    "server": "tsc && npm run init_db && node build/app/Server.js"
   },
   "keywords": [],
   "author": "",
