@@ -1,8 +1,8 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="styles/my.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link ref="stylesheet" href="styles/main.css">
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/ukulelejs/dist/uku.js"></script>
@@ -43,7 +43,7 @@
             <p>This is an automation tool for saving CATW timesheet, it's only for internal DXC private cloud teams using.</p>
             <div class="row">
                 <div class="col-md-12">
-                    <h3 style="color:#DB504A">{{mainCtrl.getScheduleMessage(mainCtrl.schedule)}}</h3>
+                    <h3 uku-style="mainCtrl.getMessageStyle()">{{mainCtrl.getScheduleMessage()}}</h3>
                     <a class="btn btn-primary btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.startSchedule()" uku-render="mainCtrl.runButtonState(mainCtrl.schedule)">
                         <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
                     </a>
@@ -61,25 +61,25 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <div class="row user-item" uku-repeat="user in mainCtrl.users">
-            <div class="col-md-12" style="position:relative">
-                <h4>{{user.displayName}}</h4>
-                <span style="position:absolute;top:0;right:0px">
-                    <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)">
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Execute Now
-                    </button>
-                </span>
-
-                <a href="javascript:;" role="button" style="margin-left:8px" uku-repeat="task in user.tasks" uku-class="parent.parent.mainCtrl.getTaskStyle(task)" uku-onclick="parent.parent.mainCtrl.showTaskDetail(task)">
+        <div class="row user-item" uku-repeat="user in mainCtrl.users" style="margin:5px">
+            <div class="col-md-2 col-sm-2">
+                <span><h4 class="user-name">{{user.displayName}}</h4></span>
+            </div>
+            <div class="col-md-1 col-sm-10">
+                <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)" style="margin-top:4px">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <a href="javascript:;" role="button" uku-repeat="task in user.tasks" uku-class="parent.parent.mainCtrl.getTaskStyle(task)"
+                    uku-onclick="parent.parent.mainCtrl.showTaskDetail(task)" style="margin:4px">
                     <span uku-class="parent.parent.mainCtrl.getTaskStyle2(task)" aria-hidden="true">{{parent.parent.mainCtrl.getTaskMessage(task)}}</span> 
                 </a>
-
             </div>
-            <hr>
         </div>
-
+        <br>
         <footer>
-            <p>&copy; 2016 Company, Inc.</p>
+            <p>Powered by Ukulele.js</p>
         </footer>
     </div>
     <!-- /container -->
@@ -129,10 +129,10 @@
 
         this.startSchedule = function () {
             $.ajax({
-                url:'/api/schedule',
-                method:'POST',
-                data: JSON.stringify({ "dayOfWeek": [1],"hour":16,"minute": 30}),
-                success:function(){
+                url: '/api/schedule',
+                method: 'POST',
+                data: JSON.stringify({ "dayOfWeek": [1], "hour": 16, "minute": 30 }),
+                success: function () {
                     //uku.refresh('mainCtrl');
                     $.get('/api/schedule', function (result) {
                         self.schedule = result;
@@ -143,9 +143,9 @@
         };
         this.stopSchedule = function () {
             $.ajax({
-                url:'/api/schedule',
-                method:'DELETE',
-                success:function(){
+                url: '/api/schedule',
+                method: 'DELETE',
+                success: function () {
                     //uku.refresh('mainCtrl');
                     $.get('/api/schedule', function (result) {
                         self.schedule = result;
@@ -217,6 +217,15 @@
             this.currentTask = task;
             uku.refresh('mainCtrl');
         };
+        this.getMessageStyle = function() {
+            var style = {};
+            if (this.schedule && this.schedule.status === 1) {
+                style = {"color":"#DB504A"};
+            } else {
+                style = {"color":"#5cb85c"};
+            }
+            return style;
+        };
         this.getScheduleMessage = function () {
             var status = '';
             if (this.schedule && this.schedule.status === 0) {
@@ -228,18 +237,18 @@
             return 'Schedule task is ' + status + description;
         };
 
-        this.getTaskRunDate = function(){
-            if(this.currentTask && this.currentTask.runDate){
+        this.getTaskRunDate = function () {
+            if (this.currentTask && this.currentTask.runDate) {
                 return ' ' + this.currentTask.runDate.slice(0, 10);
             }
             return '';
-            
+
         };
-        this.getTaskSnapshoot = function(){
-            if(this.currentTask && this.currentTask.snapshoot){
-                return 'snapshoot/'+this.currentTask.snapshoot;
+        this.getTaskSnapshoot = function () {
+            if (this.currentTask && this.currentTask.snapshoot) {
+                return 'snapshoot/' + this.currentTask.snapshoot;
             }
-            return ''; 
+            return '';
         };
     }
 

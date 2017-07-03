@@ -1,0 +1,14 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.user-item {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #eee;
+}
+.user-name {
+    overflow:hidden; /*超出的部分隐藏起来。*/ 
+    white-space:nowrap;/*不显示的地方用省略号...代替*/
+    text-overflow:ellipsis;/* 支持 IE */
+}
