@@ -54,6 +54,10 @@
                     <a class="btn btn-default btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.refreshStatus()">
                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
                     </a>
+
+                    <a class="btn btn-default btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.batchRun()">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Batch Run
+                    </a>
                 </div>
             </div>
         </div>
@@ -175,8 +179,18 @@
                 success: function (result) {
                     self.init();
                 }
-            })
+            });
 
+        };
+
+        this.batchRun = function(){
+            $.ajax({
+                url: '/api/users/batch',
+                method: 'POST',
+                success: function (result) {
+                    self.init();
+                }
+            });
         };
 
         this.syncAccounts = function () {

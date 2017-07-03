@@ -3,6 +3,7 @@ import {userController} from '../controller/UserController';
 import {automationController} from '../controller/AutomationController';
 import {User} from '../model/User';
 import {config} from '../common/Config';
+import {userDAO} from '../database/UserDAO';
 const router: Router = Router();
 
 router
@@ -10,7 +11,7 @@ router
         
     })
     .post('/users/batch',(req,res)=>{
-        let users = req.body;
+        //let users = req.body;
         
     })
     .put('/users/sync',(req,res)=>{
@@ -33,6 +34,11 @@ router
     .post('/users/:username/tasks',(req,res)=> {
         let username = req.params.username;
         automationController.executeImmediately(username);
+        res.sendStatus(200);
+    })
+    .post('/users/batch',(req,res)=>{
+        let users = userDAO.findAll();
+        automationController.batchExecute(users);
         res.sendStatus(200);
     })
     .put('/users',(req,res)=>{
