@@ -53,7 +53,15 @@ class AutomationController{
             let promiseArray:Array<any> = [];
             users.forEach((user) => {
                 let automation = new Automation();
-                promiseArray.push(automation.execute(url,user.username,user.password));
+                promiseArray.push(automation.execute(url,user.username,user.password).then((result)=>{
+                    userDAO.update({username:user.username,isRunning:false} as User);
+                    let task = new Task(new Date(),TASK_STATUS.SUCCESS,'success',result as string);
+                    userDAO.pushTask(user.usernam,task);
+                }).catch((err)=>{
+                    userDAO.update({username:user.username,isRunning:false} as User);
+                    let task = new Task(new Date(),TASK_STATUS.FAILED,'failed',err as string);
+                    userDAO.pushTask(user.username,task);
+                }));
             });
             Promise.all(promiseArray)
             .then((result)=>{
