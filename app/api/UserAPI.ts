@@ -11,8 +11,9 @@ router
         
     })
     .post('/users/batch',(req,res)=>{
-        //let users = req.body;
-        
+       let users = userDAO.findAll();
+        automationController.batchExecute(users);
+        res.sendStatus(200); 
     })
     .put('/users/sync',(req,res)=>{
         let users = config.users as Array<User>;
@@ -34,11 +35,6 @@ router
     .post('/users/:username/tasks',(req,res)=> {
         let username = req.params.username;
         automationController.executeImmediately(username);
-        res.sendStatus(200);
-    })
-    .post('/users/batch',(req,res)=>{
-        let users = userDAO.findAll();
-        automationController.batchExecute(users);
         res.sendStatus(200);
     })
     .put('/users',(req,res)=>{
