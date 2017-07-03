@@ -1,7 +1,7 @@
 {
   "schedule": {
-    "startDate": "2017-06-23T03:06:05.910Z",
-    "status": 1,
+    "startDate": "2017-06-30T01:59:39.708Z",
+    "status": 0,
     "isRunning": false,
     "rule": {
       "{\"dayOfWeek\":[1],\"hour\":16,\"minute\":30}": ""

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha build/test/test.js",
     "init_db": "node build/app/Init.js",
-    "server": "tsc && npm run init_db && node build/app/Server.js"
+    "server": "tsc && npm run init_db && forever start build/app/Server.js"
   },
   "keywords": [],
   "author": "",
