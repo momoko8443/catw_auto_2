@@ -35,6 +35,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "20383767_success_2017-06-28.png"
+        },
+        {
+          "runDate": "2017-07-07T11:50:43.421Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "20383767_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -56,6 +62,12 @@
           "status": 1,
           "message": "failed",
           "snapshoot": "60058432_failed_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:51:03.521Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60058432_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -89,6 +101,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60067210_success_2017-06-28.png"
+        },
+        {
+          "runDate": "2017-07-07T11:51:23.606Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60067210_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -116,6 +134,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60068136_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:51:56.799Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60068136_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -143,6 +167,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60070045_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:52:16.910Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60070045_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -194,6 +224,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60075098_success_2017-06-28.png"
+        },
+        {
+          "runDate": "2017-07-07T11:52:37.001Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60075098_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -221,6 +257,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60074938_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:53:27.227Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60074938_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -248,6 +290,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60076280_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:54:17.443Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60076280_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -275,6 +323,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60075123_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:57:14.569Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60075123_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -302,6 +356,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "21610770_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:57:55.929Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "21610770_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -329,6 +389,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60079305_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:58:16.010Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60079305_failed_2017-07-07.png"
         }
       ],
       "isRunning": false
@@ -356,6 +422,12 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60082036_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-07T11:58:27.214Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60082036_failed_2017-07-07.png"
         }
       ],
       "isRunning": false

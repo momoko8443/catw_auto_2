@@ -12,26 +12,26 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>-->
+                </button>
                 <a class="navbar-brand" href="#">Hello World</a>
             </div>
-            <!--<div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input type="text" placeholder="Username" class="form-control" uku-value="mainCtrl.username">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input type="password" placeholder="Password" class="form-control" uku-value="mainCtrl.password">
                     </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
+                    <a href="javascript:;" class="btn btn-success" uku-onclick="mainCtrl.login()">Sign in</a>
                 </form>
-            </div>-->
+            </div>
             <!--/.navbar-collapse -->
         </div>
     </nav>
@@ -40,7 +40,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1>CATW Auto 2.0</h1>
-            <p>This is an automation tool for saving CATW timesheet, it's only for internal DXC private cloud teams using.</p>
+            <p>Automation tool for saving CATW timesheet weekly, for DXC private cloud teams internal use only.</p>
             <div class="row">
                 <div class="col-md-12">
                     <h3 uku-style="mainCtrl.getMessageStyle()">{{mainCtrl.getScheduleMessage()}}</h3>
@@ -55,7 +55,7 @@
                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
                     </a>
 
-                    <a class="btn btn-default btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.batchRun()">
+                    <a class="btn btn-default btn-lg" href="javascript:;" role="button" uku-onclick="mainCtrl.batchRun()" uku-render="mainCtrl.isLogin">
                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Batch Run
                     </a>
                 </div>
@@ -69,7 +69,7 @@
             <div class="col-md-2 col-sm-2">
                 <span><h4 class="user-name">{{user.displayName}}</h4></span>
             </div>
-            <div class="col-md-1 col-sm-10">
+            <div class="col-md-1 col-sm-10" uku-render="parent.mainCtrl.isLogin">
                 <button class="btn btn-default" uku-disabled="user.isRunning" uku-onclick="parent.mainCtrl.execute(user.username)" style="margin-top:4px">
                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                 </button>
@@ -120,25 +120,48 @@
     function MainController(uku) {
         this.users = [];
         this.currentTask = {};
+        this.isLogin = false;
+        this.username = '';
+        this.password = '';
         var self = this;
         this.init = function () {
-            $.get('/api/users', function (result) {
+            $.get('/client/users', function (result) {
                 self.users = result;
-                $.get('/api/schedule', function (result) {
+                $.get('/client/schedule', function (result) {
                     self.schedule = result;
                     uku.refresh('mainCtrl');
                 });
             });
         };
 
+        this.login = function(){
+            if(this.username && this.password){
+                $.ajax({
+                    url: '/auth/session',
+                    method: 'POST',
+                    headers: {
+                        'content-type':'application/json'
+                    },
+                    data: JSON.stringify({ "username": this.username,"password":this.password }),
+                    success: function() {
+                        self.isLogin = true;
+                        uku.refresh('mainCtrl');
+                    }
+                })
+            }
+        };  
+
         this.startSchedule = function () {
             $.ajax({
-                url: '/api/schedule',
+                url: '/client/schedule',
                 method: 'POST',
+                headers: {
+                        'content-type':'application/json'
+                },
                 data: JSON.stringify({ "dayOfWeek": [1], "hour": 16, "minute": 30 }),
                 success: function () {
                     //uku.refresh('mainCtrl');
-                    $.get('/api/schedule', function (result) {
+                    $.get('/client/schedule', function (result) {
                         self.schedule = result;
                         uku.refresh('mainCtrl');
                     });
@@ -147,11 +170,11 @@
         };
         this.stopSchedule = function () {
             $.ajax({
-                url: '/api/schedule',
+                url: '/client/schedule',
                 method: 'DELETE',
                 success: function () {
                     //uku.refresh('mainCtrl');
-                    $.get('/api/schedule', function (result) {
+                    $.get('/client/schedule', function (result) {
                         self.schedule = result;
                         uku.refresh('mainCtrl');
                     });
@@ -160,6 +183,9 @@
         };
 
         this.runButtonState = function () {
+            if(!this.isLogin){
+                return false;
+            }
             if (this.schedule && this.schedule.status === 0) {
                 return false;
             } else {
@@ -168,13 +194,16 @@
         };
 
         this.stopButtonState = function () {
+            if(!this.isLogin){
+                return false;
+            }
             return !this.runButtonState();
         };
 
         this.execute = function (username) {
             //console.log(username);
             $.ajax({
-                url: '/api/users/' + username + '/tasks',
+                url: '/client/users/' + username + '/tasks',
                 method: 'POST',
                 success: function (result) {
                     self.init();
@@ -185,7 +214,7 @@
 
         this.batchRun = function(){
             $.ajax({
-                url: '/api/users/batch',
+                url: '/client/users/batch',
                 method: 'POST',
                 success: function (result) {
                     self.init();
@@ -195,7 +224,7 @@
 
         this.syncAccounts = function () {
             $.ajax({
-                url: '/api/users/sync',
+                url: '/client/users/sync',
                 method: 'PUT',
                 success: function (result) {
                     self.init();

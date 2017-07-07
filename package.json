@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha build/test/test.js",
     "init_db": "node build/app/Init.js",
-    "server": "tsc && npm run init_db && forever start build/app/Server.js"
+    "server": "tsc && npm run init_db && forever start build/app/Server.js",
+    "dev_server": "tsc && npm run init_db && node build/app/Server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-session": "^1.15.3",
     "loglevel": "^1.4.1",
     "lowdb": "^0.16.2",
     "node-schedule": "^1.2.1",

@@ -4,18 +4,22 @@ import {automationController} from '../controller/AutomationController';
 import {User} from '../model/User';
 import {config} from '../common/Config';
 import {userDAO} from '../database/UserDAO';
+import * as express from 'express';
 const router: Router = Router();
 
-router
+
+
+export function userApiRouter(app:any){
+    router
     .post('/users',(req,res)=>{
         
     })
-    .post('/users/batch',(req,res)=>{
+    .post('/users/batch',app['oauth'].authorise(),(req,res)=>{
        let users = userDAO.findAll();
         automationController.batchExecute(users);
         res.sendStatus(200); 
     })
-    .put('/users/sync',(req,res)=>{
+    .put('/users/sync',app['oauth'].authorise(),(req,res)=>{
         let users = config.users as Array<User>;
         userController.syncManagedUsers(users);
         res.sendStatus(200);
@@ -32,7 +36,7 @@ router
             res.sendStatus(404);
         };
     })
-    .post('/users/:username/tasks',(req,res)=> {
+    .post('/users/:username/tasks',app['oauth'].authorise(),(req,res)=> {
         let username = req.params.username;
         automationController.executeImmediately(username);
         res.sendStatus(200);
@@ -40,8 +44,9 @@ router
     .put('/users',(req,res)=>{
 
     })
-    .delete('/users/:username',(req,res)=>{
+    .delete('/users/:username',app['oauth'].authorise(),(req,res)=>{
 
     });
-
-export const userApiRouter:Router = router;
+    return router;
+}
+    
