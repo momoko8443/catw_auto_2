@@ -52,7 +52,7 @@ var AutomationController = (function () {
                 promiseArray.push(automation.execute(url, user.username, user.password).then(function (result) {
                     UserDAO_1.userDAO.update({ username: user.username, isRunning: false });
                     var task = new Task_1.Task(new Date(), Constants_1.TASK_STATUS.SUCCESS, 'success', result);
-                    UserDAO_1.userDAO.pushTask(user.usernam, task);
+                    UserDAO_1.userDAO.pushTask(user.username, task);
                 }).catch(function (err) {
                     UserDAO_1.userDAO.update({ username: user.username, isRunning: false });
                     var task = new Task_1.Task(new Date(), Constants_1.TASK_STATUS.FAILED, 'failed', err);

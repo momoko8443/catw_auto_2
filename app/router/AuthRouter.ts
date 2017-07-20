@@ -7,6 +7,19 @@ let clientId:string = 'application';
 let secret:string = 'secret';
 export function authRouter(){
     router
+    .get('/session', (req, res) => {
+        if(req.session.token){
+            res.sendStatus(200);
+        }else{
+            res.sendStatus(404);
+        }
+    })
+    .delete('/session',(req,res) => {
+        if(req.session.token){
+            delete req.session.token;
+        }
+        res.sendStatus(200);
+    })
     .post('/session',(req,res)=>{
         if(req.session.token){
             res.sendStatus(200);

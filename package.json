@@ -19,6 +19,7 @@
     "loglevel": "^1.4.1",
     "lowdb": "^0.16.2",
     "node-schedule": "^1.2.1",
+    "oauth2-server": "^2.4.1",
     "phantomjs-prebuilt": "^2.1.14",
     "selenium-webdriver": "^3.4.0"
   },

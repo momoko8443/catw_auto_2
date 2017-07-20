@@ -2,7 +2,7 @@
   "schedule": {
     "startDate": "2017-07-07T12:20:33.435Z",
     "status": 0,
-    "isRunning": true,
+    "isRunning": false,
     "rule": {
       "dayOfWeek": [
         1

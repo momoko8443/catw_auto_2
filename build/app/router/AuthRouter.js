@@ -7,6 +7,20 @@ var clientId = 'application';
 var secret = 'secret';
 function authRouter() {
     router
+        .get('/session', function (req, res) {
+        if (req.session.token) {
+            res.sendStatus(200);
+        }
+        else {
+            res.sendStatus(404);
+        }
+    })
+        .delete('/session', function (req, res) {
+        if (req.session.token) {
+            delete req.session.token;
+        }
+        res.sendStatus(200);
+    })
         .post('/session', function (req, res) {
         if (req.session.token) {
             res.sendStatus(200);

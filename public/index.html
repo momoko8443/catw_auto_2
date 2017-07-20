@@ -22,7 +22,7 @@
                 <a class="navbar-brand" href="#">Hello World</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" uku-render="mainCtrl.isShowLoginField()">
                     <div class="form-group">
                         <input type="text" placeholder="Username" class="form-control" uku-value="mainCtrl.username">
                     </div>
@@ -30,6 +30,9 @@
                         <input type="password" placeholder="Password" class="form-control" uku-value="mainCtrl.password">
                     </div>
                     <a href="javascript:;" class="btn btn-success" uku-onclick="mainCtrl.login()">Sign in</a>
+                </form>
+                <form class="navbar-form navbar-right" uku-render="mainCtrl.isLogin">
+                    <a href="javascript:;" class="navbar-right btn btn-success" uku-onclick="mainCtrl.logout()">Sign Out</a>
                 </form>
             </div>
             <!--/.navbar-collapse -->
@@ -129,9 +132,20 @@
                 self.users = result;
                 $.get('/client/schedule', function (result) {
                     self.schedule = result;
-                    uku.refresh('mainCtrl');
+                    $.get('/auth/session',function(result) {
+                        self.isLogin = true;
+                        uku.refresh('mainCtrl');
+                    }).fail( function(err){
+                        uku.refresh('mainCtrl');
+                        console.log('no session');
+                    });
                 });
             });
+            
+        };
+
+        this.isShowLoginField = function(){
+            return !this.isLogin;
         };
 
         this.login = function(){
@@ -145,9 +159,10 @@
                     data: JSON.stringify({ "username": this.username,"password":this.password }),
                     success: function() {
                         self.isLogin = true;
-                        uku.refresh('mainCtrl');
+                        self.init();
+                        //uku.refresh();
                     }
-                })
+                });
             }
         };  
 
@@ -292,6 +307,17 @@
                 return 'snapshoot/' + this.currentTask.snapshoot;
             }
             return '';
+        };
+        this.logout = function() {
+            $.ajax({
+                url: '/auth/session',
+                method: 'DELETE',
+                success: function() {
+                    self.isLogin = false;
+                    //uku.refresh('mainCtrl');
+                    self.init();
+                }
+            });
         };
     }
 

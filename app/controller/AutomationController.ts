@@ -56,7 +56,7 @@ class AutomationController{
                 promiseArray.push(automation.execute(url,user.username,user.password).then((result)=>{
                     userDAO.update({username:user.username,isRunning:false} as User);
                     let task = new Task(new Date(),TASK_STATUS.SUCCESS,'success',result as string);
-                    userDAO.pushTask(user.usernam,task);
+                    userDAO.pushTask(user.username,task);
                 }).catch((err)=>{
                     userDAO.update({username:user.username,isRunning:false} as User);
                     let task = new Task(new Date(),TASK_STATUS.FAILED,'failed',err as string);
@@ -66,7 +66,6 @@ class AutomationController{
             Promise.all(promiseArray)
             .then((result)=>{
                 resolve();
-
             }).catch((err)=>{
                 reject();
             });

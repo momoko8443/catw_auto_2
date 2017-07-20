@@ -11,7 +11,12 @@ export function forwardRouter(req, res, next) {
     }
     let body:any = [];
     if(req.method === "POST" || req.method === "PATCH" || req.method === "PUT"){   
-        buildForwardRequest(req.body);
+        if(Object.getOwnPropertyNames(req.body).length > 0 ){
+            buildForwardRequest(req.body);
+        }else{
+            buildForwardRequest(null);
+        }
+        
     }else{
         buildForwardRequest(null);
     }

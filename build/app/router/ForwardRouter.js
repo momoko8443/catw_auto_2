@@ -12,13 +12,18 @@ function forwardRouter(req, res, next) {
     }
     var body = [];
     if (req.method === "POST" || req.method === "PATCH" || req.method === "PUT") {
-        buildForwardRequest(req.body);
+        if (Object.getOwnPropertyNames(req.body).length > 0) {
+            buildForwardRequest(req.body);
+        }
+        else {
+            buildForwardRequest(null);
+        }
     }
     else {
         buildForwardRequest(null);
     }
     function buildForwardRequest(body) {
-        var opt = { url: url, headers: headers, method: req.method, json: true };
+        var opt = { 'url': url, 'headers': headers, 'method': req.method, 'json': true };
         if (body) {
             opt['body'] = body;
         }

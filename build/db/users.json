@@ -68,6 +68,12 @@
           "status": 1,
           "message": "failed",
           "snapshoot": "60058432_failed_2017-07-07.png"
+        },
+        {
+          "runDate": "2017-07-20T01:17:37.016Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60058432_failed_2017-07-20.png"
         }
       ],
       "isRunning": false
@@ -563,6 +569,12 @@
           "status": 1,
           "message": "failed",
           "snapshoot": "60081066_failed_2017-06-28.png"
+        },
+        {
+          "runDate": "2017-07-20T01:22:26.162Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60081066_failed_2017-07-20.png"
         }
       ],
       "isRunning": false
