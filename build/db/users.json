@@ -37,10 +37,22 @@
           "snapshoot": "20383767_success_2017-06-28.png"
         },
         {
-          "runDate": "2017-07-07T11:50:43.421Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "20383767_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:06.910Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "20383767_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:31.414Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "20383767_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:49.354Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "20383767_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -64,16 +76,22 @@
           "snapshoot": "60058432_failed_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:51:03.521Z",
+          "runDate": "2017-07-03T14:40:18.116Z",
           "status": 1,
           "message": "failed",
-          "snapshoot": "60058432_failed_2017-07-07.png"
+          "snapshoot": "60058432_failed_2017-07-03.png"
         },
         {
-          "runDate": "2017-07-20T01:17:37.016Z",
+          "runDate": "2017-07-03T14:41:07.894Z",
           "status": 1,
           "message": "failed",
-          "snapshoot": "60058432_failed_2017-07-20.png"
+          "snapshoot": "60058432_failed_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-19T07:06:33.296Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60058432_failed_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -109,10 +127,22 @@
           "snapshoot": "60067210_success_2017-06-28.png"
         },
         {
-          "runDate": "2017-07-07T11:51:23.606Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60067210_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:09.491Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60067210_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:34.580Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60067210_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:51.210Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60067210_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -142,10 +172,22 @@
           "snapshoot": "60068136_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:51:56.799Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60068136_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:12.570Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60068136_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:37.347Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60068136_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:53.002Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60068136_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -175,10 +217,22 @@
           "snapshoot": "60070045_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:52:16.910Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60070045_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:18.435Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60070045_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:39.620Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60070045_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:54.974Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60070045_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -232,10 +286,22 @@
           "snapshoot": "60075098_success_2017-06-28.png"
         },
         {
-          "runDate": "2017-07-07T11:52:37.001Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60075098_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:14.132Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075098_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:41.490Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075098_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:57.913Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075098_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -265,10 +331,22 @@
           "snapshoot": "60074938_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:53:27.227Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60074938_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:18.795Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60074938_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:44.051Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60074938_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:07:59.543Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60074938_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -298,10 +376,22 @@
           "snapshoot": "60076280_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:54:17.443Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60076280_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:25.986Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60076280_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:44.869Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60076280_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:02.977Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60076280_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -331,10 +421,22 @@
           "snapshoot": "60075123_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:57:14.569Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60075123_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:27.779Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075123_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:46.350Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075123_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:08.234Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60075123_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -364,10 +466,22 @@
           "snapshoot": "21610770_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:57:55.929Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "21610770_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:27.314Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "21610770_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:47.721Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "21610770_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:14.092Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "21610770_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -397,10 +511,22 @@
           "snapshoot": "60079305_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:58:16.010Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60079305_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:27.791Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079305_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:45:31.858Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079305_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:16.247Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079305_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -430,10 +556,22 @@
           "snapshoot": "60082036_success_2017-06-27.png"
         },
         {
-          "runDate": "2017-07-07T11:58:27.214Z",
-          "status": 1,
-          "message": "failed",
-          "snapshoot": "60082036_failed_2017-07-07.png"
+          "runDate": "2017-07-03T14:12:28.607Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60082036_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:49.496Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60082036_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:19.569Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60082036_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -461,6 +599,24 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60079319_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-03T14:12:30.177Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079319_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:56.291Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079319_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:20.852Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60079319_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -488,6 +644,24 @@
           "status": 0,
           "message": "success",
           "snapshoot": "60126165_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-03T14:12:31.471Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60126165_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:56.116Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60126165_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:23.254Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60126165_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -515,6 +689,24 @@
           "status": 0,
           "message": "success",
           "snapshoot": "70000632_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-03T14:12:30.315Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "70000632_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:56.677Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "70000632_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:23.912Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "70000632_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -542,13 +734,31 @@
           "status": 0,
           "message": "success",
           "snapshoot": "75000567_success_2017-06-27.png"
+        },
+        {
+          "runDate": "2017-07-03T14:12:33.468Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75000567_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:44:57.245Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "75000567_failed_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:28.510Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75000567_success_2017-07-19.png"
         }
       ],
       "isRunning": false
     },
     {
       "username": "60081066",
-      "password": "2017.May",
+      "password": "2017%May",
       "displayName": "Tong, Yangyang",
       "status": 0,
       "tasks": [
@@ -571,10 +781,46 @@
           "snapshoot": "60081066_failed_2017-06-28.png"
         },
         {
-          "runDate": "2017-07-20T01:22:26.162Z",
+          "runDate": "2017-07-03T14:12:43.643Z",
           "status": 1,
           "message": "failed",
-          "snapshoot": "60081066_failed_2017-07-20.png"
+          "snapshoot": "60081066_failed_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-03T14:40:45.253Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60081066_failed_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-03T14:41:38.900Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60081066_failed_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-04T08:17:48.311Z",
+          "status": 1,
+          "message": "failed",
+          "snapshoot": "60081066_failed_2017-07-04.png"
+        },
+        {
+          "runDate": "2017-07-07T00:12:53.251Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60081066_success_2017-07-07.png"
+        },
+        {
+          "runDate": "2017-07-12T01:45:00.318Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60081066_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:09:40.045Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "60081066_success_2017-07-19.png"
         }
       ],
       "isRunning": false
@@ -584,7 +830,26 @@
       "password": "2017.May",
       "displayName": "Lv, Yiguang",
       "status": 0,
-      "tasks": [],
+      "tasks": [
+        {
+          "runDate": "2017-07-03T14:12:35.782Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75002120_success_2017-07-03.png"
+        },
+        {
+          "runDate": "2017-07-12T01:45:00.349Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75002120_success_2017-07-12.png"
+        },
+        {
+          "runDate": "2017-07-19T07:08:31.352Z",
+          "status": 0,
+          "message": "success",
+          "snapshoot": "75002120_success_2017-07-19.png"
+        }
+      ],
       "isRunning": false
     }
   ]

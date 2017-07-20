@@ -3,4 +3,5 @@ node_modules/
 bower_components/
 .DS_Store
 public/snapshoot/
-build./db/
+build/db/
+
