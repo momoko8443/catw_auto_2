@@ -20,6 +20,8 @@
     "lowdb": "^0.16.2",
     "node-schedule": "^1.2.1",
     "oauth2-server": "^2.4.1",
+    "passport": "^0.3.2",
+    "passport-oauth": "^1.0.0",
     "phantomjs-prebuilt": "^2.1.14",
     "selenium-webdriver": "^3.4.0"
   },
